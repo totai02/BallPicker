@@ -8,7 +8,11 @@ BallPicker::BallPicker(): capture(VideoCapture(0)),
 
 int BallPicker::start()
 {
-	while(waitKey(1) != 'q'){
+	while(true){
+		char key = waitKey(1);
+		
+		if (key == 'q') break;
+		if (key == 'r') ballColor = RED;
 		
 		if(digitalRead (Config::BTN1) == LOW)
 		{
@@ -143,7 +147,7 @@ void BallPicker::process(const vector<Vec3f> &redBalls, const vector<Vec3f> &blu
         line(src, Point(WIDTH / 2, HEIGHT / 2), Point(cvRound(x), cvRound(y)), Scalar(0,255,0), 2, 4, 0);
 		float error = (float) (x - WIDTH / 2) / (WIDTH / 2);
 		
-		float destRadius = WIDTH / 24;
+		float destRadius = WIDTH / 23;
 		if (max_radius < destRadius) {
 			float x = max_radius / destRadius;
 			motor.move_forward(error, 1 - pow(x, 5));

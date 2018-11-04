@@ -24,9 +24,7 @@ public:
 	void drop();
 	
 	void setServo(int, int, int step = 10);
-private:
-	
-};
+		};
 
 #endif // ARMCONTROL_H
 

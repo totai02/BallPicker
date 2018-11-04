@@ -86,7 +86,7 @@ void DetectBall::findContour(const Mat &imgHSV, int color)
     {
         if (radius[i] < imgThresholded.rows/4)
         {
-            if (contourArea(Mat(contours[i])) > radius[i] * radius[i] * M_PI * 0.5)
+            if (contourArea(Mat(contours[i])) > radius[i] * radius[i] * M_PI * 0.6)
             {
                 if (color == 1) redBalls.push_back(Vec3f(center[i].x, center[i].y, radius[i]));
                 else blueBalls.push_back(Vec3f(center[i].x, center[i].y, radius[i]));
